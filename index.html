@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Booster — скачать оптимизатор</title>
+  <style>
+    body {margin:0;font-family:sans-serif;background:#0e0f12;color:#e6e6e6;}
+    header {display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#14161b;}
+    header .nav a {margin-left:15px;color:#e6e6e6;text-decoration:none;}
+    section {padding:20px;}
+    h1,h2,h3 {margin:8px 0;}
+    .btn {display:inline-block;padding:10px 16px;margin:5px 5px 5px 0;background:#7c5cff;color:#fff;border-radius:6px;text-decoration:none;}
+    .btn:hover {opacity:0.8;}
+    footer {text-align:center;padding:15px 0;color:#9aa3ad;background:#14161b;margin-top:30px;}
+    .card {background:#171a21;padding:15px;border-radius:12px;margin:10px 0;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><strong>Game Booster</strong></div>
+  <nav class="nav">
+    <a href="#features">Возможности</a>
+    <a href="#download">Скачать</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Оптимизатор производительности и FPS для Windows</h1>
+  <p>Мониторинг CPU/RAM, тёмная тема, и <b>автоматическое повышение приоритета</b> активного приложения.</p>
+</section>
+
+<section id="features">
+  <div class="card">
+    <h2>Возможности</h2>
+    <ul>
+      <li>Автоматическое повышение приоритета активного окна</li>
+      <li>Мониторинг CPU и RAM</li>
+      <li>Работа без “твиков реестра”, безопасно</li>
+    </ul>
+  </div>
+</section>
+
+<section id="download">
+  <div class="card">
+    <h2>Скачать</h2>
+    <a class="btn" href="setup.exe" download>Скачать .EXE</a>
+    <a class="btn" href="script.py" download>Скачать код .PY</a>
+    <a class="btn" href="pc_icon.ico" download>Скачать иконку</a>
+    <p style="margin-top:10px;color:#9aa3ad;">Рекомендуем: версия для Windows (.EXE)</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="card">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Как установить .EXE?</summary>
+      <p>Скачайте файл, запустите, подтвердите запрос UAC.</p>
+    </details>
+    <details>
+      <summary>Как проверить целостность файла?</summary>
+      <p>Используйте PowerShell: <code>Get-FileHash .\setup.exe -Algorithm SHA256</code></p>
+    </details>
+    <details>
+      <summary>Это безопасно?</summary>
+      <p>Программа лишь меняет приоритет процесса, ничего не модифицирует в системе.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Game Booster. Опубликовано автором.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
