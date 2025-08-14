@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Game Booster — скачать оптимизатор</title>
+  <meta name="description" content="Бесплатный оптимизатор: мониторинг CPU/RAM, автоматический высокий приоритет активного окна, тёмная тема." />
+  <link rel="icon" href="ride.ico">
+  <style>
+    :root{
+      --bg:#0e0f12;--bg2:#14161b;--card:#171a21;--text:#e6e6e6;--muted:#9aa3ad;--brand:#7c5cff;--brand-2:#17d1ff;--ok:#22c55e;--warn:#f59e0b;
+      --ring: 0 0 0 3px rgba(124,92,255,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Segoe UI, Inter, Roboto, system-ui, -apple-system, sans-serif;background:radial-gradient(1200px 700px at 90% -10%, rgba(124,92,255,.15), transparent), linear-gradient(180deg, var(--bg), #0b0c0f 60%);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700}
+    .logo-badge{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:0 10px 30px rgba(124,92,255,.35)}
+    .logo-badge svg{filter:drop-shadow(0 6px 14px rgba(23,209,255,.35))}
+    .nav a{opacity:.9;padding:8px 10px;border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}}
+    .title{font-size:44px;line-height:1.15;margin:6px 0 10px}
+    .subtitle{color:var(--muted);font-size:17px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 10px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;background:var(--brand);color:white;font-weight:700;border:1px solid rgba(255,255,255,.08);transition:.18s ease;cursor:pointer;}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--ring)}
+    .btn.secondary{background:transparent;border-color:rgba(255,255,255,.12)}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,255,.15);border:1px solid rgba(124,92,255,.4);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#d8d3ff}
+    .card{background:linear-gradient(180deg, var(--card), var(--bg2));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    .feature{display:flex;gap:14px}
+    .feature .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .feature h3{margin:4px 0 2px;font-size:18px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .panel{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width: 900px){.panel{grid-template-columns:1fr}}
+    .footer{margin:40px 0 20px;color:var(--muted);font-size:13px}
+    .kbd{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);padding:2px 8px;border-radius:8px;font-size:12px}
+    .dl-badge{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#b6f2c8;font-weight:700;font-size:13px}
+    dialog{background:var(--card);color:var(--text);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:0;width:min(640px, 92vw)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .modal-body{padding:16px 18px}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:8px 10px;color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 3v2a7 7 0 1 1-7 7H4a9 9 0 1 0 9-9Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <path d="M13 1v6M8 4h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span>Game Booster</span>
+      </div>
+      <nav class="nav" aria-label="Навигация">
+        <a href="#features">Возможности</a>
+        <a href="#download">Скачать</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="chip">Бесплатно · Open Source</span>
+        <h1 class="title">Оптимизатор производительности и FPS<br/>для Windows</h1>
+        <p class="subtitle">Мониторинг CPU/RAM, тёмная тема, и <b>автоматическое повышение приоритета</b> активного приложения для максимальной производительности.</p>
+        <div class="actions">
+          <a class="btn" href="https://drive.google.com/file/d/1dmzFqHY35xSJLuIaL9KFnosq3gbVrzFc/view?usp=sharing" target="_blank">
+            Скачать .EXE
+          </a>
+          <a class="btn secondary" href="script.py" download>Скачать код .PY</a>
+          <a class="btn secondary" href="ride.ico" download>Скачать иконку</a>
+          <button class="btn secondary" id="howto">Как установить</button>
+        </div>
+        <div class="dl-badge" id="dl-badge" style="margin-top:10px;display:none"></div>
+      </div>
+      <div class="card" aria-label="Превью">
+        <img src="preview.png" alt="Превью приложения" style="width:100%;border-radius:14px;display:block;border:1px solid rgba(255,255,255,.08)" onerror="this.style.display='none'">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div class="card">
+            <div class="feature">
+              <div class="icon">⚡</div>
+              <div>
+                <h3>Высокий приоритет</h3>
+                <p>Автоматически для активного окна — больше FPS и отзывчивости.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="feature">
+              <div class="icon">📊</div>
+              <div>
+                <h3>Мониторинг</h3>
+                <p>Графики загрузки CPU и памяти в реальном времени.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="panel" style="margin-top:8px">
+      <div class="card">
+        <h2 style="margin:6px 0 10px">Зачем это нужно?</h2>
+        <p style="color:var(--muted)">Во время игры Windows может распределять ресурсы между множеством процессов. Game Booster поднимает приоритет активного приложения, чтобы процессор уделял ему максимум внимания.</p>
+        <ul style="line-height:1.9;color:var(--muted)">
+          <li>Никаких «твиков реестра» — всё безопасно и обратимо.</li>
+          <li>Работа с правами администратора по запросу.</li>
+          <li>Двухъязычный интерфейс: RU/EN.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 style="margin:6px 0 10px">Минимальные требования</h2>
+        <ul style="line-height:1.9;color:var(--muted)">
+          <li>Windows 10/11 x64</li>
+          <li>Python 3.9+ (для .py версии) или готовый .exe</li>
+          <li>Права администратора для смены приоритета</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="download" class="card" style="margin-top:18px">
+      <h2 style="margin:6px 0 12px">Скачать</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>.EXE (рекомендуется)</h3>
+          <p class="subtitle">Скачайте с Google Диска и установите.</p>
+          <a class="btn" href="https://drive.google.com/file/d/1dmzFqHY35xSJLuIaL9KFnosq3gbVrzFc/view?usp=sharing" target="_blank">Скачать setup.exe</a>
+        </div>
+        <div class="card">
+          <h3>.PY (исходники)</h3>
+          <p class="subtitle">Запуск: <span class="kbd">python script.py</span>. Пакеты: <span class="kbd">PyQt5</span>, <span class="kbd">psutil</span>, <span class="kbd">matplotlib</span>.</p>
+          <a class="btn secondary" href="script.py" download>Скачать script.py</a>
+        </div>
+        <div class="card">
+          <h3>Портативная иконка</h3>
+          <p class="subtitle">Иконка для ярлыка/сборки .exe</p>
+          <a class="btn secondary" href="ride.ico" download>Скачать ride.ico</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="card" style="margin-top:18px">
+      <h2 style="margin:6px 0 12px">FAQ</h2>
+      <details>
+        <summary>Как установить .EXE?</summary>
+        <p class="subtitle">Скачайте файл с Google Диска и установите приложение через setup, затем запустите его от имени администратора и немного подождите, пока скрипты будут обрабатываться. Откроется меню программы, нажмите "Запустить", зайдите в свою любимую игру и увидите прирост как минимум 10 ФПС+!</p>
+      </details>
+      <details>
+        <summary>Это безопасно?</summary>
+        <p class="subtitle">Программа лишь меняет приоритет активного процесса. Изменения действуют только во время работы системы и не модифицируют реестр.</p>
+      </details>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> Game Booster. Опубликовано автором.
+    </footer>
+  </div>
+
+  <dialog id="modal">
+    <div class="modal-head">
+      <strong>Как установить</strong>
+      <button class="close" id="close">Закрыть</button>
+    </div>
+    <div class="modal-body">
+      <ol style="line-height:1.9;margin:0;color:var(--muted)">
+        <li>Скачайте <b>setup.exe</b> с Google Диска.</li>
+        <li>Установите приложение через setup.</li>
+        <li>Запустите программу от имени администратора и немного подождите, пока скрипты будут обрабатываться.</li>
+        <li>Откроется меню программы, нажмите <b>"Запустить"</b>.</li>
+        <li>Зайдите в свою любимую игру и увидите прирост как минимум 10 ФПС+!</li>
+      </ol>
+    </div>
+  </dialog>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const modal = document.getElementById('modal');
+    document.getElementById('howto').addEventListener('click', ()=> modal.showModal());
+    document.getElementById('close').addEventListener('click', ()=> modal.close());
+    const badge = document.getElementById('dl-badge');
+    if(navigator.userAgent.includes('Windows')){
+      badge.style.display = 'inline-flex';
+      badge.innerHTML = 'Рекомендуем: версия для Windows (.EXE)';
+    }
+  </script>
+</body>
+</html>
